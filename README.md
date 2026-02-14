@@ -1,2 +1,204 @@
 # surprise
 special
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Special Day ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin-top: 50px;
+    font-size: 40px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 30px #ff1a75; }
+}
+
+.message {
+    font-size: 22px;
+    margin: 20px;
+    min-height: 50px;
+}
+
+/* Memories */
+.memory {
+    opacity: 0;
+    transition: 1.5s;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.show {
+    opacity: 1;
+}
+
+/* Photo Gallery */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transition: 2s;
+}
+
+.gallery.show {
+    opacity: 1;
+}
+
+.gallery img {
+    width: 220px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255,0,102,0.8);
+    transition: 0.5s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Video Section */
+.video-box {
+    margin-top: 40px;
+    opacity: 0;
+    transition: 2s;
+}
+
+.video-box.show {
+    opacity: 1;
+}
+
+video {
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255,0,102,0.9);
+}
+
+/* Button */
+button {
+    margin-top: 25px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: #ff1a75;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e6005c;
+    transform: scale(1.1);
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    color: red;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Our Beautiful Valentine ❤️</h1>
+
+<div class="message" id="typing"></div>
+
+<div class="memory" id="m1">🌹 The surprise that made you smile</div>
+<div class="memory" id="m2">🎁 The joy in your eyes</div>
+<div class="memory" id="m3">💞 The love we felt together</div>
+
+<!-- 📸 Photos -->
+<div class="gallery" id="photoGallery">
+    <img src="us1.jpg" alt="Memory 1">
+    <img src="us2.jpg" alt="Memory 2">
+    <img src="us3.jpg" alt="Memory 3">
+</div>
+
+<!-- 🎥 Video -->
+<div class="video-box" id="videoBox">
+    <h2>🎥 Our Special Moment</h2>
+    <video controls>
+        <source src="lovevideo.mp4" type="video/mp4">
+    </video>
+</div>
+
+<button onclick="startLove()">Click To Reveal Our Memories 💌</button>
+
+<script>
+// Typing Effect
+const text = "You made this day unforgettable 💖 Every second with you becomes a beautiful memory. I’m so lucky to have you in my life 🥰";
+let i = 0;
+
+function typingEffect() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typingEffect, 50);
+    }
+}
+
+function startLove() {
+    typingEffect();
+
+    document.getElementById("m1").classList.add("show");
+
+    setTimeout(() => {
+        document.getElementById("m2").classList.add("show");
+    }, 1500);
+
+    setTimeout(() => {
+        document.getElementById("m3").classList.add("show");
+    }, 3000);
+
+    setTimeout(() => {
+        document.getElementById("photoGallery").classList.add("show");
+    }, 4500);
+
+    setTimeout(() => {
+        document.getElementById("videoBox").classList.add("show");
+    }, 6500);
+}
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
